@@ -1,0 +1,46 @@
+# This is a basic workflow to help you get started with Actions
+name: Deployment
+
+# Controls when the action will run. 
+on:
+    workflow_dispatch:
+      # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  # Deploy the components to cloudk2 staging sandbox.
+  workflow-dispatch-error:
+    if: ${{ (github.event_name == 'workflow_dispatch') && (github.ref_name != 'release/qa-beta-promotion') && (github.ref_name != 'release/qa-promotion') }}
+    name: Deployment Error
+    runs-on: ubuntu-latest
+    steps:
+    - name: Error message
+      run: |
+        echo "Wrong branch (${{ github.ref_name }}) hasbeen selected for deployment";
+        exit 1;
+
+
+  # Deploy the components to cloudk2 staging sandbox.
+  qa-beta-promote:
+    if: ${{ (github.event_name == 'workflow_dispatch') && (github.ref_name == 'release/qa-beta-promotion') }}
+    # Utilizing the dynamic yml file for reusability
+    uses: ./.github/workflows/validation-workflow.yml
+    with:
+      SOURCE_ORG_ALIAS: CI
+      BASE_BRANCH: qa
+    secrets:
+      SECRET_URL_PATH: ${{secrets.QA_ORG_AUTH_URL}}
+      DOCKER_HUB_UN: ${{secrets.DOCKER_HUB_USERNAME}}
+      DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
+
+  # Deploy the components to uat staging sandbox.
+  qa-promote:
+    if: ${{ (github.event_name == 'workflow_dispatch') && (github.ref_name == 'release/qa-promotion') }}
+    # Utilizing the dynamic yml file for reusability
+    uses: ./.github/workflows/validation-workflow.yml
+    with:
+      SOURCE_ORG_ALIAS: CI
+      BASE_BRANCH: qa
+    secrets:
+      SECRET_URL_PATH: ${{secrets.QA_ORG_AUTH_URL}}
+      DOCKER_HUB_UN: ${{secrets.DOCKER_HUB_USERNAME}}
+      DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
