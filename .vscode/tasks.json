@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "skuid-pages-pull",
+            "type": "shell",
+            "command": "./cicd-utils/skuid-util/skuidpull.sh", // Update this with the correct path to your script
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "sfdmu-data-pull",
+            "type": "shell",
+            "command": "bash",
+            "args": ["./cicd-utils/sfdmu/sfdmupull.sh"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        }
+    ]
+}

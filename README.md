@@ -1,3 +1,244 @@
-## ck--salesforce--devops
+# **Salesforce DX Project & CI/CD Setup**
 
-This is a boilerplate for the Salesforce project which also contain the DevOps setup.
+Welcome to our Salesforce DX (SFDX) Project Boilerplate! This comprehensive starter project allows you to quickly set up a production-ready SFDX project and seamlessly integrate Continuous Integration/Continuous Deployment (CI/CD) processes. With just a few simple steps, you'll have a fully configured SFDX environment on your machine, ready for efficient Salesforce development.
+
+**Table of Contents**
+- [**Introduction**](#introduction)
+- [**Key Features**](#key-features)
+- [**Prerequisites**](#prerequisites)
+- [**Salesforce Sandboxes Details**](#salesforce-sandboxes-details)
+- [**Project Structure**](#project-structure)
+- [**Setup Guide**](#setup-guide)
+
+# **Introduction**
+
+Salesforce DX (Developer Experience) revolutionizes the way developers build and manage Salesforce applications. It provides a modern development lifecycle that enhances collaboration, simplifies development tasks, and ensures the delivery of high-quality applications. 
+
+Continuous Integration and Continuous Deployment (CI/CD) practices further amplify the benefits of Salesforce DX by automating the process of integrating code changes, running tests, and deploying updates to various environments.
+
+**Salesforce DX Project**
+
+A Salesforce DX project is a structured workspace that houses all the resources necessary for developing, testing, and deploying Salesforce applications. Key components of a Salesforce DX project include:
+
+- **Source-Driven Development:** Salesforce DX embraces a source-driven development model, where the source code, configuration, and metadata are stored in version control systems such as Git.
+
+- **Modular Architecture:** Projects are organized into modular components, such as apps, modules, and packages, facilitating collaboration among developers and enabling better code reuse.
+
+- **Scratch Orgs:** Scratch orgs are ephemeral and disposable Salesforce environments that closely mimic production orgs. Developers can create, modify, and delete scratch orgs dynamically, enabling isolated development and testing of features.
+
+- **CLI Commands:** The Salesforce DX CLI provides a powerful set of commands for managing Salesforce DX projects, including creating scratch orgs, deploying metadata, running tests, and more.
+
+**CI/CD for Salesforce DX**
+
+Continuous Integration (CI) and Continuous Deployment (CD) practices streamline the development and release process for Salesforce applications. CI/CD involves automating various stages of the development lifecycle, including:
+
+- **Source Control Integration:** Developers commit code changes to version control systems, triggering CI pipelines.
+
+- **Automated Testing:** CI pipelines automatically run unit tests, integration tests, and other types of tests to ensure code quality and functionality.
+
+- **Deployment Automation:** CD pipelines deploy code changes to different environments, such as development, QA, UAT, and production, with minimal manual intervention.
+
+- **Feedback Loop:** CI/CD pipelines provide real-time feedback on code changes, enabling developers to quickly identify and address issues.
+
+By implementing CI/CD for Salesforce DX projects, organizations can accelerate development cycles, improve code quality, and deliver value to customers more efficiently.
+
+In this guide, we will explore the setup and configuration of CI/CD pipelines for Salesforce DX projects, empowering teams to leverage the full potential of Salesforce DX and achieve greater agility in application development and delivery.
+
+# **Key Features**
+
+**Efficient Project Setup:**
+This boilerplate provides a streamlined process for setting up your SFDX project, ensuring rapid deployment and configuration.
+
+**CI/CD Integration:**
+Enjoy seamless integration of CI/CD processes into your SFDX project. This includes automated builds, testing, and deployment pipelines, facilitating a smooth and reliable development workflow.
+
+**Salesforce Metadata Changes Deployment:**
+Easily deploy changes to Salesforce metadata, including Apex classes, custom fields, objects, profiles, and permissions, using the CI/CD process. This ensures timely and consistent deployment of Salesforce configurations.
+
+**Skuid Page Deployment:**
+Seamlessly deploy Skuid pages to your Salesforce org, allowing for rapid development and customization of user interfaces.
+
+**Data Deployment with SFDX Data Migration Utility (SFDMU):**
+Leverage the power of the SFDX Data Migration Utility (SFDMU) to efficiently deploy data to your Salesforce org. This feature enables you to easily populate your org with test data or migrate data between environments.
+
+# **Prerequisites**
+
+Before proceeding with the CI/CD setup, please ensure that your development environment meets the following requirements:
+
+- **Java 11 or Above:** Ensure that you have Java 11 or a higher version installed on your machine. This repository is compatible with Java version 11 and above. If you install a different version of Java, adjustments may be required in other setup components such as CI/CD shell scripts and Salesforce DX CLI commands.
+
+- **Node:** Install Node version 18 or higher on your machine. Node/NPM is a prerequisite for various development tools and scripts used in the setup process.
+
+- **Salesforce DX CLI:** Install the latest version of Salesforce DX CLI, which is essential for Salesforce development tasks such as creating scratch orgs, deploying metadata, and executing commands against Salesforce orgs.
+
+- **SFDMU Plugin:** Install the latest version of the Salesforce Data Migration Utility (SFDMU) plugin. SFDMU facilitates data deployment tasks within the Salesforce environment.
+
+- **Skuid Plugin:** Install the latest version of the Skuid plugin, which enables the deployment of Skuid pages to your Salesforce org.
+
+- **Docker:** Ensure that Docker is installed on your system. Docker is required for creating Docker images for the SFDX project CI/CD setup. Note that Docker installation is not mandatory for every developer's machine; it is only necessary for individuals involved in creating Docker images.
+
+- **Customer Docker Hub Account:** During the setup process, you will need access to your customer's Docker Hub account. Please obtain the Docker Hub account credentials from your customer for this step. Once the setup is complete, we recommend advising the customer to change the password for security purposes.
+
+- **Salesforce Environment:** Please proceed with the creation of the developer (Dev), quality assurance (QA), user acceptance testing (UAT), and pre-production (Pre-Prod) sandboxes from the production environment. While the configurations may differ based on individual customer requirements, it's standard practice within the industry to incorporate these environments into a CI/CD pipeline.
+
+  Furthermore, we kindly request that all sandboxes be refreshed from the production environment and synchronized with it before initiating the CI/CD setup. Specifically, the Dev and QA sandboxes should be categorized as developer sandboxes, the UAT sandbox should be configured as a partial copy, and the Pre-Prod sandbox should mirror the production environment as a full copy.
+
+Now that you have completed the prerequisites mentioned above, you are ready to proceed with setting up the SFDX project with CI/CD. Navigate to the [**Setup Guide**](#setup-guide) section to set up the CI/CD for your Salesforce SFDX project.
+
+# **Salesforce Sandboxes Details**
+
+In a CI/CD process, it is common practice to have multiple Salesforce environments to facilitate development, testing, and deployment stages. Below are the recommended environments along with their typical configurations:
+
+**1. Development (dev) Sandbox:**
+- **Purpose:** This sandbox is used by developers for individual development and testing tasks.
+- **Configuration:** It typically mirrors the production environment but allows developers to experiment without impacting live data.
+- **Access:** Access to the dev sandbox is granted to developers for ongoing development and testing activities.
+
+**2. Quality Assurance (qa) Sandbox:**
+- **Purpose:** The qa sandbox serves as a dedicated environment for comprehensive testing, including functional, integration, and regression testing.
+- **Configuration:** Similar to the dev sandbox, but may include additional configurations for QA-specific testing scenarios.
+- **Access:** Access to the qa sandbox is granted to QA engineers and testers for rigorous testing before deployment to higher environments.
+
+**3. User Acceptance Testing (uat) Sandbox:**
+- **Purpose:** The uat sandbox is used for user acceptance testing, allowing stakeholders and end-users to validate the functionality of the application before deployment to production.
+- **Configuration:** It is often a partial copy of the production environment, containing a subset of production data to simulate real-world scenarios.
+- **Access:** Access to the uat sandbox is granted to stakeholders, business users, and testers for user acceptance testing.
+
+**4. Pre-Production (pre-prod) Sandbox:**
+- **Purpose:** The pre-prod sandbox is a full copy of the production environment and serves as the final stage for testing before deployment to production.
+- **Configuration:** It closely mirrors the production environment, including data and configurations.
+- **Access:** Access to the pre-prod sandbox is restricted to authorized personnel involved in final testing and deployment activities.
+
+It's important to note that the specific configurations and access permissions for each environment may vary depending on the organization's requirements and policies. Additionally, some organizations may have additional environments or variations of the ones listed above to accommodate their unique needs.
+
+By setting up these environments in your CI/CD process, you can ensure a structured and reliable workflow for developing, testing, and deploying Salesforce applications, ultimately leading to higher quality and more efficient software delivery.
+
+# **Project Structure**
+
+```
+ck--salesforce--devops
+├─ .eslintignore
+├─ .forceignore
+├─ .github
+│  └─ workflows
+│     ├─ auto-deployment.yml
+│     ├─ deployment-workflow.yml
+│     ├─ manual-deployment.yml
+│     ├─ pr-validation-workflow.yml
+│     └─ pr-validation.yml
+├─ .gitignore
+├─ .husky
+│  └─ pre-commit
+├─ .prettierignore
+├─ .prettierrc
+├─ .vscode
+│  ├─ extensions.json
+│  ├─ launch.json
+│  ├─ settings.json
+│  └─ tasks.json
+├─ README.md
+├─ cicd-utils
+│  ├─ pmd-util
+│  │  └─ pmd-rule
+│  │     └─ pmdRules.xml
+│  ├─ scripts-util
+│  │  ├─ authenticateorg.sh
+│  │  ├─ generatedeltapkg.sh
+│  │  ├─ generatetestclass.sh
+│  │  ├─ quickdeploy.sh
+│  │  ├─ scanner.sh
+│  │  ├─ sfdmu.sh
+│  │  ├─ skuidpush.sh
+│  │  └─ validateComponents.sh
+│  ├─ sfdmu
+│  │  ├─ firstrun
+│  │  │  └─ export.json
+│  │  └─ sfdmupull.sh
+│  ├─ sgddelta-util
+│  │  └─ .sgdignore
+│  ├─ skuid-util
+│  │  ├─ skuid-page
+│  │  │  └─ skuidPages.txt
+│  │  └─ skuidpull.sh
+│  └─ testclass-util
+│     ├─ allTestClasses.txt
+│     └─ subsetOfAllTestClasses.txt
+├─ config
+│  └─ project-scratch-def.json
+├─ force-app
+│  └─ main
+│     └─ default
+├─ jest.config.js
+├─ manifest
+│  └─ package.xml
+├─ package.json
+├─ scripts
+│  ├─ apex
+│  │  └─ hello.apex
+│  └─ soql
+│     └─ account.soql
+└─ sfdx-project.json
+
+```
+
+**Folder and File Details**
+
+- **.eslintignore**: Specifies patterns to be ignored by ESLint.
+  
+- **.forceignore**: Lists files and directories to exclude when deploying Salesforce metadata.
+
+- **.github**: Folder containing GitHub Actions workflows for automating CI/CD processes.
+
+  - **workflows**: Subfolder containing YAML files defining different GitHub Actions workflows.
+
+- **.gitignore**: Specifies intentionally untracked files to ignore in Git.
+
+- **.husky**: Folder containing configuration for Husky, a Git hooks manager.
+
+  - **pre-commit**: Folder containing pre-commit hook scripts.
+
+- **.prettierignore**: Lists files to be ignored by Prettier code formatter.
+
+- **.prettierrc**: Configuration file for Prettier code formatter.
+
+- **.vscode**: Contains Visual Studio Code settings and configurations.
+
+- **README.md**: Markdown file containing project documentation and instructions.
+
+- **cicd-utils**: Folder containing utilities/scripts related to CI/CD processes.
+
+  - **pmd-util**: Utilities for PMD (Programming Mistake Detector) rule configuration.
+
+  - **scripts-util**: Scripts for various development and deployment tasks.
+
+  - **sfdmu**: Salesforce Data Migration Utility scripts.
+
+  - **sgddelta-util**: Utilities for Salesforce Get Delta operations in the CI/CD process.
+
+  - **skuid-util**: Utilities for managing Skuid pages deployment using CI/CD.
+
+  - **testclass-util**: Utilities for managing Apex test classes in CI/CD process.
+
+- **config**: Contains configuration files for the project.
+
+  - **project-scratch-def.json**: Definition file for Salesforce scratch org creation.
+
+- **force-app**: Contains the source code and metadata for the Salesforce application.
+
+- **jest.config.js**: Configuration file for Jest testing framework.
+
+- **manifest**: Contains the package.xml file for retrieving metadata components.
+
+- **package.json**: npm package configuration file.
+
+- **scripts**: Contains sample Apex and SOQL scripts.
+
+- **sfdx-project.json**: Configuration file for the Salesforce DX project.
+
+This project structure encompasses various configuration files, utilities, and source code necessary for Salesforce development and CI/CD processes.
+
+# **Setup Guide**
+
+Please refer to [this](https://cloudkaptan.sharepoint.com/:f:/s/LearnShare2/ErEYkOJoX5ZKha-7E1WYwu0BkqlvMWgI7qSs-hJCE61Kuw?e=zIy3lP) folder for the setup guide, ensuring that you use the latest version of the setup Guide. It also encompasses all the details regarding CI/CD setup and associated scripts.
+
+
