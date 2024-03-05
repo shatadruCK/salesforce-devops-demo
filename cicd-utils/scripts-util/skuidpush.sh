@@ -7,8 +7,6 @@
 # Function to fetch origin and add it to safe repository
 fetchOrigin() {
     git config --global --add safe.directory '*'
-    #fetch the current commit to remote
-    git fetch origin "+refs/heads/*:refs/remotes/origin/*"
 }
 
 # Function to fetch changes in Skuid pages and push to Salesforce
