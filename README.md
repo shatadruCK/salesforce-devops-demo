@@ -4,6 +4,7 @@ Welcome to our Salesforce DX (SFDX) Project Boilerplate! This comprehensive star
 
 **Table of Contents**
 - [**Introduction**](#introduction)
+- [**Key Features**](#key-features)
 - [**Project Structure**](#project-structure)
 - [**Setup Guide**](#setup-guide)
 
@@ -44,10 +45,10 @@ In this guide, we will explore the setup and configuration of CI/CD pipelines fo
 # **Key Features**
 
 **Efficient Project Setup:**
-This boilerplate provides a streamlined process for setting up your SFDX project, ensuring rapid deployment and configuration.
+It provides a streamlined process for setting up your SFDX project, ensuring rapid deployment and configuration.
 
 **CI/CD Integration:**
-Enjoy seamless integration of CI/CD processes into your SFDX project. This includes automated builds, testing, and deployment pipelines, facilitating a smooth and reliable development workflow.
+Enjoy seamless integration of CI/CD processes into your SFDX project. This includes automated builds, unit testing, and deployment pipelines, facilitating a smooth and reliable development workflow.
 
 **Salesforce Metadata Changes Deployment:**
 Easily deploy changes to Salesforce metadata, including Apex classes, custom fields, objects, profiles, and permissions, using the CI/CD process. This ensures timely and consistent deployment of Salesforce configurations.
@@ -57,6 +58,9 @@ Seamlessly deploy Skuid pages to your Salesforce org, allowing for rapid develop
 
 **Data Deployment with SFDX Data Migration Utility (SFDMU):**
 Leverage the power of the SFDX Data Migration Utility (SFDMU) to efficiently deploy data to your Salesforce org. This feature enables you to easily populate your org with test data or migrate data between environments.
+
+**Static Code Anlysis:** Incorporated static code analysis using PMD as a key feature within the CI/CD pipeline, enabling automatic detection of code issues and ensuring adherence to coding standards, thereby enhancing code quality and maintainability.
+
 
 # **Project Structure**
 
