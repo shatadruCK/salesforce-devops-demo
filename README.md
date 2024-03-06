@@ -4,9 +4,6 @@ Welcome to our Salesforce DX (SFDX) Project Boilerplate! This comprehensive star
 
 **Table of Contents**
 - [**Introduction**](#introduction)
-- [**Key Features**](#key-features)
-- [**Prerequisites**](#prerequisites)
-- [**Salesforce Sandboxes Details**](#salesforce-sandboxes-details)
 - [**Project Structure**](#project-structure)
 - [**Setup Guide**](#setup-guide)
 
@@ -60,58 +57,6 @@ Seamlessly deploy Skuid pages to your Salesforce org, allowing for rapid develop
 
 **Data Deployment with SFDX Data Migration Utility (SFDMU):**
 Leverage the power of the SFDX Data Migration Utility (SFDMU) to efficiently deploy data to your Salesforce org. This feature enables you to easily populate your org with test data or migrate data between environments.
-
-# **Prerequisites**
-
-Before proceeding with the CI/CD setup, please ensure that your development environment meets the following requirements:
-
-- **Java 11 or Above:** Ensure that you have Java 11 or a higher version installed on your machine. This repository is compatible with Java version 11 and above. If you install a different version of Java, adjustments may be required in other setup components such as CI/CD shell scripts and Salesforce DX CLI commands.
-
-- **Node:** Install Node version 18 or higher on your machine. Node/NPM is a prerequisite for various development tools and scripts used in the setup process.
-
-- **Salesforce DX CLI:** Install the latest version of Salesforce DX CLI, which is essential for Salesforce development tasks such as creating scratch orgs, deploying metadata, and executing commands against Salesforce orgs.
-
-- **SFDMU Plugin:** Install the latest version of the Salesforce Data Migration Utility (SFDMU) plugin. SFDMU facilitates data deployment tasks within the Salesforce environment.
-
-- **Skuid Plugin:** Install the latest version of the Skuid plugin, which enables the deployment of Skuid pages to your Salesforce org.
-
-- **Docker:** Ensure that Docker is installed on your system. Docker is required for creating Docker images for the SFDX project CI/CD setup. Note that Docker installation is not mandatory for every developer's machine; it is only necessary for individuals involved in creating Docker images.
-
-- **Customer Docker Hub Account:** During the setup process, you will need access to your customer's Docker Hub account. Please obtain the Docker Hub account credentials from your customer for this step. Once the setup is complete, we recommend advising the customer to change the password for security purposes.
-
-- **Salesforce Environment:** Please proceed with the creation of the developer (Dev), quality assurance (QA), user acceptance testing (UAT), and pre-production (Pre-Prod) sandboxes from the production environment. While the configurations may differ based on individual customer requirements, it's standard practice within the industry to incorporate these environments into a CI/CD pipeline.
-
-  Furthermore, we kindly request that all sandboxes be refreshed from the production environment and synchronized with it before initiating the CI/CD setup. Specifically, the Dev and QA sandboxes should be categorized as developer sandboxes, the UAT sandbox should be configured as a partial copy, and the Pre-Prod sandbox should mirror the production environment as a full copy.
-
-Now that you have completed the prerequisites mentioned above, you are ready to proceed with setting up the SFDX project with CI/CD. Navigate to the [**Setup Guide**](#setup-guide) section to set up the CI/CD for your Salesforce SFDX project.
-
-# **Salesforce Sandboxes Details**
-
-In a CI/CD process, it is common practice to have multiple Salesforce environments to facilitate development, testing, and deployment stages. Below are the recommended environments along with their typical configurations:
-
-**1. Development (dev) Sandbox:**
-- **Purpose:** This sandbox is used by developers for individual development and testing tasks.
-- **Configuration:** It typically mirrors the production environment but allows developers to experiment without impacting live data.
-- **Access:** Access to the dev sandbox is granted to developers for ongoing development and testing activities.
-
-**2. Quality Assurance (qa) Sandbox:**
-- **Purpose:** The qa sandbox serves as a dedicated environment for comprehensive testing, including functional, integration, and regression testing.
-- **Configuration:** Similar to the dev sandbox, but may include additional configurations for QA-specific testing scenarios.
-- **Access:** Access to the qa sandbox is granted to QA engineers and testers for rigorous testing before deployment to higher environments.
-
-**3. User Acceptance Testing (uat) Sandbox:**
-- **Purpose:** The uat sandbox is used for user acceptance testing, allowing stakeholders and end-users to validate the functionality of the application before deployment to production.
-- **Configuration:** It is often a partial copy of the production environment, containing a subset of production data to simulate real-world scenarios.
-- **Access:** Access to the uat sandbox is granted to stakeholders, business users, and testers for user acceptance testing.
-
-**4. Pre-Production (pre-prod) Sandbox:**
-- **Purpose:** The pre-prod sandbox is a full copy of the production environment and serves as the final stage for testing before deployment to production.
-- **Configuration:** It closely mirrors the production environment, including data and configurations.
-- **Access:** Access to the pre-prod sandbox is restricted to authorized personnel involved in final testing and deployment activities.
-
-It's important to note that the specific configurations and access permissions for each environment may vary depending on the organization's requirements and policies. Additionally, some organizations may have additional environments or variations of the ones listed above to accommodate their unique needs.
-
-By setting up these environments in your CI/CD process, you can ensure a structured and reliable workflow for developing, testing, and deploying Salesforce applications, ultimately leading to higher quality and more efficient software delivery.
 
 # **Project Structure**
 
@@ -239,6 +184,6 @@ This project structure encompasses various configuration files, utilities, and s
 
 # **Setup Guide**
 
-Please refer to [this](https://cloudkaptan.sharepoint.com/:f:/s/LearnShare2/ErEYkOJoX5ZKha-7E1WYwu0BkqlvMWgI7qSs-hJCE61Kuw?e=zIy3lP) folder for the setup guide, ensuring that you use the latest version of the setup Guide. It also encompasses all the details regarding CI/CD setup and associated scripts.
+Please refer to [this](https://cloudkaptan.sharepoint.com/:f:/s/LearnShare2/ErEYkOJoX5ZKha-7E1WYwu0BkqlvMWgI7qSs-hJCE61Kuw?e=KFBad8) folder for the setup guide, ensuring that you use the latest version of the setup Guide. It also encompasses all the details regarding CI/CD setup and associated scripts.
 
 
