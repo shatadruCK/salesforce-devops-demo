@@ -16,27 +16,31 @@ pushSkuidPages() {
 
     # Getting a list of Skuid pages with changes
     if [[ -d "$skuidPageFolderPath" ]]; then
-        SPECIFIED_SKUID_PAGES=$(git diff HEAD HEAD~1 --name-only $skuidPageFolderPath)
+        SPECIFIED_SKUID_PAGES=$(git diff HEAD HEAD^ --name-only $skuidPageFolderPath)
     fi
     
     echo "---------------------------------------------------------------------------------------------------"
     echo "|                                           Skuid Data Push                                       |"
     echo "---------------------------------------------------------------------------------------------------"
     # Iterate through all the changes in the skuidpages folder
-    for i in $SPECIFIED_SKUID_PAGES; do
-        if [ "${i##*.}" = "xml" ]; then  # Check if file extension is .xml
-            echo "Pushing changes for page $i..."
-            if sf skuid:page:push --page "$i" -u "$AUTH_ORG_ALIAS"; then
-                echo "Successfully pushed changes for page $i"
+    if [ -n "$SPECIFIED_SKUID_PAGES" ]; then
+        for i in $SPECIFIED_SKUID_PAGES; do
+            if [ "${i##*.}" = "xml" ]; then  # Check if file extension is .xml
+                echo "Pushing changes for page $i..."
+                if sf skuid:page:push --page "$i" -u "$AUTH_ORG_ALIAS"; then
+                    echo "Successfully pushed changes for page $i"
+                else
+                    echo "Failed to push changes for page $i"
+                    # Handle error scenario here (e.g., exit script, log error, etc.)
+                    exit 1
+                fi
             else
-                echo "Failed to push changes for page $i"
-                # Handle error scenario here (e.g., exit script, log error, etc.)
-                exit 1
+                echo "Skipping non-XML file: $i"
             fi
-        else
-            echo "Skipping non-XML file: $i"
-        fi
-    done
+        done
+    else
+        echo "No Skuid page file changes or new Skuid page file added in the $skuidPageFolderPath directory. Skipping Skuid page push."
+    fi
 }
 
 # Initiate git origins
