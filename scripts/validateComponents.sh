@@ -13,7 +13,7 @@ function validateComponent() {
   then
     if grep -q '<name>ApexClass</name>' $PACKAGE_XML; then
           # Initiating async deployment with RunSpecifiedTests.
-          sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML -l RunSpecifiedTests -tests "$(cat manifest/testclass/testclass.txt)" --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE 
+          sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML -l RunSpecifiedTests --tests "$(cat manifest/testclass/testclass.txt)" --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE 
       else
           # Initiating async deployment without specifying test classes.
           sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE
