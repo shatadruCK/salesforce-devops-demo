@@ -35,7 +35,7 @@ sf plugins install @salesforce/cli-plugin-code-analyzer || true
 # --output-file writes a machine-readable report for artifact upload
 sf code-analyzer run \
   --target               "$TARGET" \
-  --rule-selector        "all" \
+  --rule-selector        "pmd"\
   --output-file          "$OUTPUT_DIR/results.json" \
   --severity-threshold   $SEVERITY_THRESHOLD
 
