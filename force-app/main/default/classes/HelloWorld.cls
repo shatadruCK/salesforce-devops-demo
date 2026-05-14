@@ -1,5 +1,11 @@
 public with sharing class HelloWorld {
-    public static String sayHello() {
-        return 'Hello world, hiiiiiiiiiiiiiiiiii';
+
+    public static String getGreeting(String name) {
+
+        if(String.isBlank(name)) {
+            return 'Hello, Guest';
+        }
+
+        return 'Hello, ' + name;
     }
 }
