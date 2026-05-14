@@ -52,6 +52,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # Install Salesforce CLI (sf v2)
       - name: Install Salesforce CLI
