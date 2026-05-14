@@ -30,7 +30,7 @@ jobs:
       # DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
       # PROD_DOMAIN: ${{ secrets.PROD_DOMAIN }}
       SF_USERNAME: ${{secrets.SF_USERNAME}}
-      SF_JWT_PRIVATE_KEY: /tmp/server.key
+      SF_JWT_PRIVATE_KEY: ${{ secrets.SF_JWT_PRIVATE_KEY }}
       SF_CLIENT_ID: ${{secrets.SF_CONSUMER_KEY}}
 
 

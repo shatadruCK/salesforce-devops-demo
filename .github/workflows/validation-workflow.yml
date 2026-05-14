@@ -51,7 +51,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Install Salesforce CLI (sf v2)
       - name: Install Salesforce CLI
@@ -59,7 +59,7 @@ jobs:
 
       #install sfdx-git-delta
       - name: Install sfdx-git-delta
-        run: npm install -g sfdx-git-delta
+        run: echo y | sf plugins install sfdx-git-delta
 
       # Reads the JWT private key from the GitHub secret and writes it to a temporary file with appropriate permissions
       - name: Write JWT Private Key
