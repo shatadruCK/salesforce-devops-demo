@@ -38,7 +38,7 @@ fi
 
 # ── Read test classes from file ───────────────────────────────────
 # testclass.txt should have class names separated by newlines or spaces
-TEST_CLASSES=$(cat "$TEST_CLASS_FILE" | tr '\n' ' ' | xargs | tr ' ' ',')
+TEST_CLASSES=$(cat "$TEST_CLASS_FILE")
 echo "    Test classes : $TEST_CLASSES"
 echo ""
 
