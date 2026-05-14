@@ -16,10 +16,11 @@ on:
 jobs:
   # This workflow contains a single job called "build"
 
-    
+  set-env:
+    runs-on: ubuntu-latest  
+    environment: DEV
   build:
     #utilizing reusable workflow from provided path
-    environment: DEV
     uses: ./.github/workflows/validation-workflow.yml
     
     #passing inputs to the reusable workflow.
