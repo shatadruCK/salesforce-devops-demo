@@ -91,6 +91,7 @@ jobs:
 
       # Quick Deploy if validation is success
       - name: Quick Deploy
+        if: env.DELTA_HAS_CHANGES == 'true'
         run: chmod +x ./scripts/quickdeploy.sh && ./scripts/quickdeploy.sh
         shell: bash
         # if: ${{ env.SOURCE_ORG_ALIAS != 'CIa' && env.SKIP_VALIDATION }}
