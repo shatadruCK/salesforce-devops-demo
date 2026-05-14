@@ -21,7 +21,7 @@ set -euo pipefail
 TARGET_ORG_ALIAS="${ORG_ALIAS}"
 PACKAGE_XML="delta-package/package/package.xml"
 TEST_CLASS_FILE="manifest/testclass/testclass.txt"
-RESULT_FILE="deploy-result.json"
+RESULT_FILE="./DEPLOY_ORG.txt"
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo " Delta Check-Only Validation"
