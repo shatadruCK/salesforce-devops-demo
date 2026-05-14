@@ -19,7 +19,7 @@ private class HelloWorldTest {
         String result = HelloWorld.getGreeting('');
 
         System.assertEquals(
-            'Hello, Guest',
+            'Hello, Guestt',
             result,
             'Blank name should return Guest greeting'
         );
