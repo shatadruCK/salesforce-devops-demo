@@ -36,8 +36,7 @@ sf plugins install @salesforce/cli-plugin-code-analyzer || true
 sf code-analyzer run \
   --target               "$TARGET" \
   --rule-selector        "all" \
-  --output-format        table \
-  --output-file          "$OUTPUT_DIR/scan-results.html" \
+  --output-file          "$OUTPUT_DIR/results.json" \
   --severity-threshold   $SEVERITY_THRESHOLD
 
 echo ""
