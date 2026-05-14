@@ -8,7 +8,8 @@ private class HelloWorldTest {
 
         System.assertEquals(
             'Hello, Shatadru',
-            result
+            result,
+            'Greeting should match the provided name'
         );
     }
 
@@ -19,7 +20,8 @@ private class HelloWorldTest {
 
         System.assertEquals(
             'Hello, Guest',
-            result
+            result,
+            'Blank name should return Guest greeting'
         );
     }
 }
