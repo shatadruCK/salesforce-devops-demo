@@ -30,14 +30,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 mkdir -p "$OUTPUT_DIR"
 
 # ── Run SGD ─────────────────────────────────────────────────────────
-sgd \
-  --to            HEAD \
-  --from          "origin/$BASE_BRANCH" \
-  --repo          . \
-  --output        "$OUTPUT_DIR" \
-  --api-version   "$API_VERSION" \
-  --ignore        "$IGNORE_FILE" \
-  --generate-delta
+sf sgd source delta \
+  --from "origin/$BASE_BRANCH" \
+  --output-dir "$OUTPUT_DIR" \
+  --ignore-file "$IGNORE_FILE"
 
 # ── Show what was generated ─────────────────────────────────────────
 echo ""
