@@ -12,7 +12,7 @@
 set -euo pipefail
 
 TARGET_ORG_ALIAS="${ORG_ALIAS}"
-DEPLOY_JOB_ID="$FINAL_DEPLOY_ID:?❌ FINAL_DEPLOY_ID is required — run validate.sh first"
+DEPLOY_JOB_ID="${DEPLOY_JOB_ID:?❌ DEPLOY_JOB_ID missing}"
 RESULT_FILE="quick-deploy-result.json"
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

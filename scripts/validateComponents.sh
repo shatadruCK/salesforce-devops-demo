@@ -25,6 +25,7 @@ function validateComponent() {
         echo $DEPLOYMENT_STRING
         FINAL_DEPLOY_ID=${DEPLOYMENT_STRING:0:18}
         echo $FINAL_DEPLOY_ID
+        echo "DEPLOY_JOB_ID=$FINAL_DEPLOY_ID" >> $GITHUB_ENV
 
         # Monitor the async validation job and generate coverage and test reports
         sf project deploy resume --job-id $FINAL_DEPLOY_ID --coverage-formatters cobertura --junit --results-dir "pipeline-artifacts" --verbose
