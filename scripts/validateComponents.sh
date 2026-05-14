@@ -6,14 +6,14 @@ function validateComponent() {
 
   TARGET_ORG_ALIAS="${ORG_ALIAS}"
   PACKAGE_XML="delta-package/package/package.xml"
-  TEST_CLASS_FILE="cat manifest/testclass/testclass.txt"
+  TEST_CLASS_FILE="manifest/testclass/testclass.txt"
   RESULT_FILE="./DEPLOY_ORG.txt"
 
   if grep -q '<types>'  $PACKAGE_XML
   then
     if grep -q '<name>ApexClass</name>' $PACKAGE_XML; then
           # Initiating async deployment with RunSpecifiedTests.
-          sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML -l RunSpecifiedTests -tests $TEST_CLASS_FILE --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE 
+          sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML -l RunSpecifiedTests -tests "$(cat manifest/testclass/testclass.txt)" --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE 
       else
           # Initiating async deployment without specifying test classes.
           sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE
