@@ -20,7 +20,7 @@ function validateComponent() {
       fi
 
             # Fetching Deploy Id from the output.
-        VALIDATION_OUTPUT=$(cat $deployOrgFilePath) 
+        VALIDATION_OUTPUT=$(cat $RESULT_FILE) 
         DEPLOYMENT_STRING=${VALIDATION_OUTPUT#*Deploy ID: }
         echo $DEPLOYMENT_STRING
         FINAL_DEPLOY_ID=${DEPLOYMENT_STRING:0:18}
