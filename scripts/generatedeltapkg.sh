@@ -17,7 +17,6 @@ set -euo pipefail
 BASE_BRANCH="${BASE_BRANCH}"
 API_VERSION="${API_VERSION:-59.0}"
 OUTPUT_DIR="./delta-package"
-IGNORE_FILE="manifest/.sgdignore"
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo " Generating delta package"
@@ -33,7 +32,6 @@ mkdir -p "$OUTPUT_DIR"
 sf sgd source delta \
   --from "origin/$BASE_BRANCH" \
   --output-dir "$OUTPUT_DIR" \
-  --ignore-file "$IGNORE_FILE"
 
 # ── Show what was generated ─────────────────────────────────────────
 echo ""
