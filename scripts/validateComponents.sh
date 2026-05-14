@@ -44,15 +44,18 @@ echo ""
 
 # ── Run check-only deployment ─────────────────────────────────────
 # --json gives us structured output so we can reliably extract the Job ID
-sf project deploy start \
-  --manifest       "$PACKAGE_XML" \
-  --target-org     "$TARGET_ORG_ALIAS" \
-  --dry-run \
-  --test-level     RunSpecifiedTests \
-  --tests          "$TEST_CLASSES" \
-  --json \
-  --wait           60 \
-  | tee "$RESULT_FILE"
+# sf project deploy start \
+#   --manifest       "$PACKAGE_XML" \
+#   --target-org     "$TARGET_ORG_ALIAS" \
+#   --dry-run \
+#   --test-level     RunSpecifiedTests \
+#   --tests          "$TEST_CLASSES" \
+#   --json \
+#   --wait           60 \
+#   | tee "$RESULT_FILE"
+
+  sf project deploy start -o $TARGET_ORG_ALIAS -x $PACKAGE_XML -l RunSpecifiedTests -t $(cat $TEST_CLASS_FILE) --verbose --dry-run --async --ignore-conflicts | tee $RESULT_FILE 
+
 
 DEPLOY_EXIT_CODE=${PIPESTATUS[0]}
 
