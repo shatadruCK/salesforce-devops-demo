@@ -15,9 +15,13 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+
+    
   build:
     #utilizing reusable workflow from provided path
+    environment: DEV
     uses: ./.github/workflows/validation-workflow.yml
+    
     #passing inputs to the reusable workflow.
     with:
       AUTH_ORG_ALIAS: UAT
