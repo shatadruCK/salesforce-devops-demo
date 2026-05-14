@@ -33,7 +33,7 @@ jobs:
       BASE_BRANCH: ${{ inputs.BASE_BRANCH }}
       CLIENT_ID: ${{ secrets.SF_CLIENT_ID }}
       USERNAME: ${{ secrets.SF_USERNAME }}
-      SECURE_FILE: server.key
+      SECURE_FILE: ${{secrets.SF_JWT_SECRET_KEY}}
       # PRODUCTION_DOMAIN: ${{ secrets.PROD_DOMAIN }}
       FORCE_SHOW_SPINNER: true
       #SFDX_REST_DEPLOY: true
