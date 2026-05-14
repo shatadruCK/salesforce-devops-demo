@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+name: PR Validation (Learn And Share)
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    #utilizing reusable workflow from provided path
+    uses: ./.github/workflows/validation-workflow.yml
+    #passing inputs to the reusable workflow.
+    with:
+      AUTH_ORG_ALIAS: UAT
+      BASE_BRANCH: main
+    #passing secrets to the reusable workflow.
+    secrets:
+      SF_INSTANCE_URL: ${{secrets.SF_INSTANCE_URL}}
+      # DOCKER_HUB_UN: ${{secrets.DOCKER_HUB_USERNAME}}
+      # DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
+      # PROD_DOMAIN: ${{ secrets.PROD_DOMAIN }}
+      SF_USERNAME: ${{secrets.SF_USERNAME}}
+      SF_JWT_PRIVATE_KEY: ${{secrets.SF_JWT_SECRET_KEY}}
+      SF_CLIENT_ID: ${{secrets.SF_CONSUMER_KEY}}
+    steps: 
+      # Write the JWT key from GitHub Secret to a temp file
+      - name: Write server.key from secret
+        run: |
+          echo "${{ secrets.SF_JWT_PRIVATE_KEY }}" > server.key
+          chmod 600 server.key
