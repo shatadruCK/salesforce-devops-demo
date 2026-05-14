@@ -37,7 +37,8 @@ sf code-analyzer run \
   --target               "$TARGET" \
   --rule-selector        "pmd"\
   --output-file          "$OUTPUT_DIR/results.json" \
-  --severity-threshold   $SEVERITY_THRESHOLD
+  --severity-threshold   $SEVERITY_THRESHOLD \
+  --view detail 
 
 echo ""
 echo "✅  Code Analyzer scan passed — no violations at or above severity $SEVERITY_THRESHOLD."
