@@ -84,7 +84,7 @@ jobs:
       
       # Instantiate PMD Check for the components
       - name: PMD Check
-        run: chmod +x ./cicd-utils/scripts-util/scanner.sh && ./cicd-utils/scripts-util/scanner.sh./cicd-utils/scripts-util
+        run: chmod +x ./cicd-utils/scripts-util/scanner.sh && ./cicd-utils/scripts-util/scanner.sh
 
       # Dynamically generate test class list
       - name: Test Class List Generation
