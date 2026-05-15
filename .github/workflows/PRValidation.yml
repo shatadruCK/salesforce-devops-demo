@@ -21,8 +21,9 @@ jobs:
     
     #passing inputs to the reusable workflow.
     with:
+      WORKFLOW_TYPE: PRVALIDATION
       AUTH_ORG_ALIAS: UAT
-      BASE_BRANCH: main
+      BASE_BRANCH: ${{ github.base_ref }}
     #passing secrets to the reusable workflow.
     secrets:
       SF_INSTANCE_URL: ${{secrets.SF_INSTANCE_URL}}

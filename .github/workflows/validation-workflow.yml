@@ -11,6 +11,9 @@ on:
       BASE_BRANCH:
         required: true
         type: string
+      WORKFLOW_TYPE:
+        equired: true
+        type: string
     #specifying the required secrets for this reusable workflow
     secrets:
       SF_INSTANCE_URL:
@@ -72,27 +75,32 @@ jobs:
 
       # Authenticate The Org and 
       - name: Populate Auth File And Authorize
-        run:  chmod +x ./scripts/authenticateorg.sh && ./scripts/authenticateorg.sh
+        run:  chmod +x ./cicd-utils/scripts-util/authenticateorg.sh && ./cicd-utils/scripts-util/authenticateorg.sh
         shell: bash
 
       # Generate Delta Package
       - name: Generate Delta Packages
-        run: chmod +x ./scripts/generatedeltapkg.sh && ./scripts/generatedeltapkg.sh
+        run: chmod +x ./cicd-utils/scripts-util/generatedeltapkg.sh && ./cicd-utils/scripts-util/generatedeltapkg.sh
       
       # Instantiate PMD Check for the components
       - name: PMD Check
-        run: chmod +x ./scripts/scanner.sh && ./scripts/scanner.sh
+        run: chmod +x ./cicd-utils/scripts-util/scanner.sh && ./cicd-utils/scripts-util/scanner.sh./cicd-utils/scripts-util
+
+      # Dynamically generate test class list
+      - name: Test Class List Generation
+        run: chmod +x ./cicd-utils/scripts-util/generatetestclass.sh && bash cicd-utils/scripts-util/generatetestclass.sh
+        shell: bash
       
       # Validate the components against CI Org
       - name: Validate
         # if: env.DELTA_HAS_CHANGES == 'true'   # ← skips if nothing changed
-        run: chmod +x ./scripts/validateComponents.sh && ./scripts/validateComponents.sh
+        run: chmod +x ./cicd-utils/scripts-util/validateComponents.sh && ./cicd-utils/scripts-util/validateComponents.sh
         shell: bash
 
       # Quick Deploy if validation is success
       - name: Quick Deploy
         if: env.DELTA_HAS_CHANGES == 'true'
-        run: chmod +x ./scripts/quickdeploy.sh && ./scripts/quickdeploy.sh
+        run: chmod +x ./cicd-utils/scripts-util/quickdeploy.sh && ./cicd-utils/scripts-util/quickdeploy.sh
         shell: bash
         # if: ${{ env.SOURCE_ORG_ALIAS != 'CIa' && env.SKIP_VALIDATION }}
         

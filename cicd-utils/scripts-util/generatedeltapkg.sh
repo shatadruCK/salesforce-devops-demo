@@ -28,6 +28,12 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 # ── Create output directories ───────────────────────────────────────
 mkdir -p "$OUTPUT_DIR"
 
+# Create pipeline-artifacts directory will contain artifact related folder/files and adding the pmd report container csv file inside it
+mkdir pipeline-artifacts
+touch pipeline-artifacts/pmd-results.csv
+# Create the runTestClasses file inside the testclass-util folder which will contain all the test classes  taht will run during validation process
+touch cicd-utils/testclass-util/runTestClasses.txt
+
 # ── Run SGD ─────────────────────────────────────────────────────────
 sf sgd source delta \
   --from "origin/$BASE_BRANCH" \

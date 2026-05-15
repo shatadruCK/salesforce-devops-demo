@@ -14,7 +14,7 @@
 set -euo pipefail
 
 TARGET="force-app/**"
-OUTPUT_DIR="./scanner-results"
+OUTPUT_DIR="pipeline-artifacts/pmd-results.csv"
 SEVERITY_THRESHOLD=3        # fail on Critical, High, Moderate and above
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -23,7 +23,7 @@ echo " Target     : $TARGET"
 echo " Fail on    : severity <= $SEVERITY_THRESHOLD"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-mkdir -p "$OUTPUT_DIR"
+# mkdir -p "$OUTPUT_DIR"
 
 # ── Install the plugin if not already present ──────────────────────
 # The `|| true` prevents set -e from exiting if it's already installed
@@ -36,7 +36,7 @@ sf plugins install @salesforce/cli-plugin-code-analyzer || true
 sf code-analyzer run \
   --target               "$TARGET" \
   --rule-selector        "pmd"\
-  --output-file          "$OUTPUT_DIR/results.json" \
+  --output-file          "$OUTPUT_DIR" \
   --severity-threshold   $SEVERITY_THRESHOLD \
   --view detail 
 
