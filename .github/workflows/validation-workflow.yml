@@ -12,7 +12,7 @@ on:
         required: true
         type: string
       WORKFLOW_TYPE:
-        equired: true
+        required: true
         type: string
     #specifying the required secrets for this reusable workflow
     secrets:
