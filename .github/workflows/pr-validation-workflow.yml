@@ -18,7 +18,7 @@ on:
 
     # Specifying the required secrets for this reusable workflow
     secrets:
-      SECRET_URL_PATH:
+      SF_INSTANCE_URL:
         required: true
       SF_CLIENT_ID:
         required: true
