@@ -52,7 +52,6 @@ executeDeltaValidation() {
     # Execute sf sgd:source:delta command
     # sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
      sf sgd source delta \
-        --to             HEAD \
         --from           "$from" \
         --output         "$changedSourceFolderPath"
 }
