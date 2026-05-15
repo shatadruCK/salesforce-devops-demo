@@ -77,7 +77,6 @@ printDeltaPackageDetails() {
 }
 
 # Initiate delta package generation
-updateHomeDirectory
 fetchOrigin
 createDirectories
 executeDeltaValidation
