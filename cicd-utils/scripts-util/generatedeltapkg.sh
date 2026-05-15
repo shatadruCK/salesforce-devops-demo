@@ -5,10 +5,10 @@
 # Date : 12/12/2023
 # --------------------------------------------------------------------------------------------------------------
 
-# Function to update HOME directory to root
-updateHomeDirectory() {
-    export HOME=/root
-}
+# # Function to update HOME directory to root
+# updateHomeDirectory() {
+#     export HOME=/root
+# }
 
 # Function to initialize the safe directory configuration for Git and fetch origin.
 fetchOrigin() {
@@ -50,7 +50,13 @@ executeDeltaValidation() {
     fi
     
     # Execute sf sgd:source:delta command
-    sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
+    # sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
+     sgd \
+        --to             HEAD \
+        --from           "$from" \
+        --output         "$changedSourceFolderPath" \
+        --ignore         "$sgdIgnoreFilePath" \
+        --generate-delta
 }
 
 # Function to print the output to the console
