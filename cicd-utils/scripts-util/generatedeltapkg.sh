@@ -54,8 +54,7 @@ executeDeltaValidation() {
      sf sgd source delta \
         --to             HEAD \
         --from           "$from" \
-        --output         "$changedSourceFolderPath" \
-        --ignore         "$sgdIgnoreFilePath" \
+        --output         "$changedSourceFolderPath"
 }
 
 # Function to print the output to the console
