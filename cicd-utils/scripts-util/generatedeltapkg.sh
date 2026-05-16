@@ -53,7 +53,7 @@ executeDeltaValidation() {
     # sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
      sf sgd source delta \
         --from           "$from" \
-        --output         "$changedSourceFolderPath"
+        --output-dir     "$changedSourceFolderPath"
 }
 
 # Function to print the output to the console
