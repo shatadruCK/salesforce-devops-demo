@@ -213,5 +213,5 @@ generateTestClassesListToRun() {
 }
 
 # Initiate test class list generation
-fetchOrigin
+# fetchOrigin
 generateTestClassesListToRun
