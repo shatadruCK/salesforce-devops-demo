@@ -10,16 +10,16 @@
 #     export HOME=/root
 # }
 
-# Function to initialize the safe directory configuration for Git and fetch origin.
-fetchOrigin() {
-    # Add a global configuration for the safe directory.
-    git config --global --add safe.directory '*'
+# # Function to initialize the safe directory configuration for Git and fetch origin.
+# fetchOrigin() {
+#     # Add a global configuration for the safe directory.
+#     git config --global --add safe.directory '*'
 
-    # If the workflow type is PR validation, fetch the base branch from the remote repository.
-    if [[ "$WORKFLOW_TYPE" == "PRVALIDATION" ]]; then
-        git fetch origin "refs/heads/$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
-    fi
-}
+#     # If the workflow type is PR validation, fetch the base branch from the remote repository.
+#     if [[ "$WORKFLOW_TYPE" == "PRVALIDATION" ]]; then
+#         git fetch origin "refs/heads/$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
+#     fi
+# }
 
 # Function to create directories for storing generated delta files and pipeline artifacts
 createDirectories() {
@@ -74,7 +74,7 @@ printDeltaPackageDetails() {
 }
 
 # Initiate delta package generation
-fetchOrigin
+# fetchOrigin
 createDirectories
 executeDeltaValidation
 printDeltaPackageDetails
