@@ -39,7 +39,6 @@ executeScannerAndShowResult() {
     --target          "$forceAppMainFolderPath" \
     --rule-selector   "$scanEngineName" \
     --config-file     "$pmdRulePath" \
-    --output-format   "$reportFileType" \
     --output-file     "$pmdReportPath" \
     --severity-threshold 3
 
