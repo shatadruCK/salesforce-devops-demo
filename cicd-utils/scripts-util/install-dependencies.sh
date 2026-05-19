@@ -5,7 +5,7 @@ installPackages() {
     echo "|                              Installing Salesforce CLI and Plugins                                       |"
     echo "------------------------------------------------------------------------------------------------------------"
 
-        sudo npm install @salesforce/cli@2.130.9 --global --silent --no-fund --no-audit
+        sudo npm install @salesforce/cli@2.134.6 --global --silent --no-fund --no-audit
         echo 'y' | sf plugins install sfdx-git-delta@6.31.0
         sf plugins install code-analyzer@5.11.1
 }
