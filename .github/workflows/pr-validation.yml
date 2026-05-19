@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/pr-validation-workflow.yml
     with:
       WORKFLOW_TYPE: PRVALIDATION
-      AUTH_ORG_ALIAS: UAT
+      AUTH_ORG_ALIAS: QA
       BASE_BRANCH: ${{ github.base_ref }}
     secrets:
       SF_INSTANCE_URL: ${{secrets.SF_INSTANCE_URL}}
