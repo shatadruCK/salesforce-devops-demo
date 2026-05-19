@@ -15,14 +15,14 @@ on:
 
     # Specifying the required secrets for this reusable workflow
     secrets:
-      SECRET_URL_PATH:
+      SF_INSTANCE_URL:
         required: true
-      DOCKER_HUB_UN:
+      SF_CLIENT_ID:
         required: true
-      DOCKER_HUB_PW:
+      SF_JWT_PRIVATE_KEY:
         required: true
-      PROD_ORG_DOMAIN:
-        required: false
+      SF_USERNAME:
+        required: true
 
 jobs:
   deployment:
@@ -33,17 +33,19 @@ jobs:
     env:
       WORKFLOW_TYPE: ${{ inputs.WORKFLOW_TYPE }}
       AUTH_ORG_ALIAS: ${{ inputs.AUTH_ORG_ALIAS }}
-      SECRET_URL_PATH: ${{ secrets.SECRET_URL_PATH }}
-      PROD_ORG_DOMAIN: ${{ secrets.PROD_ORG_DOMAIN }}
+      INSTANCE_URL: ${{ secrets.SF_INSTANCE_URL }}
+      CLIENT_ID: ${{ secrets.SF_CLIENT_ID }}
+      USERNAME: ${{ secrets.SF_USERNAME }}
+      SECURE_FILE: /tmp/server.key
       SFDX_DISABLE_DNS_CHECK: true
       FORCE_SHOW_SPINNER: true
 
-    # Docker container load
-    container:
-      image: kpck/sfdx-cli-image
-      credentials:
-        username: ${{ secrets.DOCKER_HUB_UN }}
-        password: ${{ secrets.DOCKER_HUB_PW }}
+    # # Docker container load
+    # container:
+    #   image: kpck/sfdx-cli-image
+    #   credentials:
+    #     username: ${{ secrets.DOCKER_HUB_UN }}
+    #     password: ${{ secrets.DOCKER_HUB_PW }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job.
     steps:
@@ -78,15 +80,15 @@ jobs:
         run: chmod +x ./cicd-utils/scripts-util/quickdeploy.sh && ./cicd-utils/scripts-util/quickdeploy.sh
         shell: bash
 
-      # Metadata Components Deploy
-      - name: SFDMU Data Deploy
-        run: chmod +x ./cicd-utils/scripts-util/sfdmu.sh && ./cicd-utils/scripts-util/sfdmu.sh
-        shell: bash
+      # # Metadata Components Deploy
+      # - name: SFDMU Data Deploy
+      #   run: chmod +x ./cicd-utils/scripts-util/sfdmu.sh && ./cicd-utils/scripts-util/sfdmu.sh
+      #   shell: bash
 
-      # Skuid Pages Deploy
-      - name: Deploy Skuid Pages
-        run: chmod +x ./cicd-utils/scripts-util/skuidpush.sh && ./cicd-utils/scripts-util/skuidpush.sh
-        shell: bash
+      # # Skuid Pages Deploy
+      # - name: Deploy Skuid Pages
+      #   run: chmod +x ./cicd-utils/scripts-util/skuidpush.sh && ./cicd-utils/scripts-util/skuidpush.sh
+      #   shell: bash
 
       # Upload Artifacts
       - name: Publish Results (Uplaod Artifacts)
