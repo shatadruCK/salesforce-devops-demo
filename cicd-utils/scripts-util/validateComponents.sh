@@ -20,7 +20,6 @@ performDeltaCheckOnlyDeployment() {
         # Initiating async deployment.
         if grep -q '<name>ApexClass</name>' $packageXmlFilePath; then
             # Initiating async deployment with RunSpecifiedTests.
-            $(cat $runTestClassesFilePath)
             sf project deploy start -o $AUTH_ORG_ALIAS -x $packageXmlFilePath -l RunSpecifiedTests --tests HelloWorldTest --verbose --dry-run --async | tee $deployOrgFilePath
         else
             # Initiating async deployment without specifying test classes.
