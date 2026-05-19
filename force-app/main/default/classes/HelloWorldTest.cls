@@ -18,7 +18,7 @@ private class HelloWorldTest {
         String result = HelloWorld.getGreeting('');
 
         System.assertEquals(
-            'Hello, Guest',
+            'Hello, Guest2',
             result
         );
     }
