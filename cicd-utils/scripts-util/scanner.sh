@@ -27,13 +27,20 @@ executeScannerAndShowResult() {
     local scanEngineName="pmd"
     local reportFileType="csv"
 
-    # Execute the PMD scanner command
-    sf scanner:run --engine "$scanEngineName" \
-                   --format "$reportFileType" \
-                   --pmdconfig "$pmdRulePath" \
-                   --outfile "$pmdReportPath" \
-                   --target "$forceAppMainFolderPath" \
-                   --normalize-severity
+    # # Execute the PMD scanner command
+    # sf scanner:run --engine "$scanEngineName" \
+    #                --format "$reportFileType" \
+    #                --pmdconfig "$pmdRulePath" \
+    #                --outfile "$pmdReportPath" \
+    #                --target "$forceAppMainFolderPath" \
+    #                --normalize-severity
+
+     sf code-analyzer run \
+    --target          "$forceAppMainFolderPath" \
+    --rule-selector   "$scanEngineName" \
+    --config-file     "$pmdRulePath" \
+    --output-file     "$pmdReportPath" \
+    --severity-threshold 3
 
     # Displaying code scan report
     echo "---------------------------------------------------------------------------------------------------"

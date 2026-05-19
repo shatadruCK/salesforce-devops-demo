@@ -5,21 +5,21 @@
 # Date : 12/12/2023
 # --------------------------------------------------------------------------------------------------------------
 
-# Function to update HOME directory to root
-updateHomeDirectory() {
-    export HOME=/root
-}
+# # Function to update HOME directory to root
+# updateHomeDirectory() {
+#     export HOME=/root
+# }
 
-# Function to initialize the safe directory configuration for Git and fetch origin.
-fetchOrigin() {
-    # Add a global configuration for the safe directory.
-    git config --global --add safe.directory '*'
+# # Function to initialize the safe directory configuration for Git and fetch origin.
+# fetchOrigin() {
+#     # Add a global configuration for the safe directory.
+#     git config --global --add safe.directory '*'
 
-    # If the workflow type is PR validation, fetch the base branch from the remote repository.
-    if [[ "$WORKFLOW_TYPE" == "PRVALIDATION" ]]; then
-        git fetch origin "refs/heads/$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
-    fi
-}
+#     # If the workflow type is PR validation, fetch the base branch from the remote repository.
+#     if [[ "$WORKFLOW_TYPE" == "PRVALIDATION" ]]; then
+#         git fetch origin "refs/heads/$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
+#     fi
+# }
 
 # Function to create directories for storing generated delta files and pipeline artifacts
 createDirectories() {
@@ -50,7 +50,10 @@ executeDeltaValidation() {
     fi
     
     # Execute sf sgd:source:delta command
-    sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
+    # sf sgd:source:delta --to HEAD --from "$from" --output $changedSourceFolderPath -i $sgdIgnoreFilePath --generate-delta
+     sf sgd source delta \
+        --from           "$from" \
+        --output-dir     "$changedSourceFolderPath"
 }
 
 # Function to print the output to the console
@@ -71,8 +74,7 @@ printDeltaPackageDetails() {
 }
 
 # Initiate delta package generation
-updateHomeDirectory
-fetchOrigin
+# fetchOrigin
 createDirectories
 executeDeltaValidation
 printDeltaPackageDetails

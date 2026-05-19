@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2026-05-16T05:38:57.720Z" hostname="undefined" tests="2" failures="0"  errors="0"  time="0.15">
+        <properties>
+            <property name="commandTime" value="0.00 s"/>
+            <property name="failRate" value="0.00%"/>
+            <property name="failing" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="passing" value="2"/>
+            <property name="skipped" value="0"/>
+            <property name="testExecutionTime" value="0.15 s"/>
+            <property name="testStartTime" value="Sat May 16 2026 11:08:57 AM"/>
+            <property name="testTotalTime" value="0.15 s"/>
+            <property name="testsRan" value="2"/>
+        </properties>
+        <testcase name="testGreetingWithName" classname="HelloWorldTest" time="0.04">
+        </testcase>
+        <testcase name="testGreetingWithoutName" classname="HelloWorldTest" time="0.07">
+        </testcase>
+    </testsuite>
+</testsuites>
